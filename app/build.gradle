@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.edoubletech.moviemania"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding{
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha02"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha02"
+    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha02"
+    implementation "androidx.paging:paging-runtime:2.0.0-alpha1"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt 'com.android.databinding:compiler:3.2.0-alpha18'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation "androidx.room:room-runtime:2.0.0-alpha1"
+    kapt "androidx.room:room-compiler:2.0.0-alpha1"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+}
