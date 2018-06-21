@@ -14,17 +14,23 @@
  *    limitations under the License.
  */
 
-package com.edoubletech.moviemania.data.dao
+package com.edoubletech.moviemania.data
 
-import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
-import com.edoubletech.moviemania.data.model.MovieResponse
+import androidx.paging.PagedList
+import com.edoubletech.moviemania.data.api.MovieService
+import com.edoubletech.moviemania.data.model.Movie
 
-abstract class MovieDao : BaseDao<MovieResponse> {
+class TmdbBoundaryCallback(
+        private val service: MovieService
+) : PagedList.BoundaryCallback<Movie>() {
 
-    abstract fun getMovieById(movieId: Int): LiveData<MovieResponse>
+    override fun onZeroItemsLoaded() {
+    }
 
-    abstract fun getPopularMovies(): DataSource.Factory<Int, MovieResponse>
+    override fun onItemAtEndLoaded(itemAtEnd: Movie) {
 
-    abstract fun getTopRatedMovies(): DataSource.Factory<Int, MovieResponse>
+    }
+
+    private fun requestAndSaveData(){
+    }
 }

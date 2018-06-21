@@ -20,7 +20,6 @@ import androidx.room.Database
 import com.edoubletech.moviemania.data.dao.MovieDao
 import com.edoubletech.moviemania.data.model.Movie
 
-@Database(entities = [(Movie::class)], version = 1, exportSchema = false)
 abstract class MovieDb {
 
     abstract fun movieDao(): MovieDao

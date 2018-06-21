@@ -16,15 +16,14 @@
 
 package com.edoubletech.moviemania.data.dao
 
-import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
-import com.edoubletech.moviemania.data.model.MovieResponse
+import androidx.room.Delete
+import androidx.room.Insert
 
-abstract class MovieDao : BaseDao<MovieResponse> {
+interface BaseDao<T> {
 
-    abstract fun getMovieById(movieId: Int): LiveData<MovieResponse>
+    @Insert
+    fun insertData(data: T)
 
-    abstract fun getPopularMovies(): DataSource.Factory<Int, MovieResponse>
-
-    abstract fun getTopRatedMovies(): DataSource.Factory<Int, MovieResponse>
+    @Delete
+    fun deleteData(data: T)
 }

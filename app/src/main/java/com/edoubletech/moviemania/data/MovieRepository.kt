@@ -16,5 +16,38 @@
 
 package com.edoubletech.moviemania.data
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.edoubletech.moviemania.Injector
+import com.edoubletech.moviemania.data.model.Movie
+import com.edoubletech.moviemania.data.model.MovieResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 class MovieRepository {
+
+    private val service = Injector.provideMovieService()
+    private val mutableListOfMovies = MutableLiveData<List<Movie>>()
+
+    init {
+        service.getPopularMovies().enqueue(object : Callback<MovieResponse> {
+            override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
+
+                Log.e("Movie Repository", "Error getting the movies", t)
+            }
+
+            override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
+                val movieResponse = response?.body()
+                val listOfPopularMovies = movieResponse?.results
+                mutableListOfMovies.value = listOfPopularMovies
+            }
+
+        })
+    }
+
+    fun getPopularMovies(): LiveData<List<Movie>> {
+        return mutableListOfMovies
+    }
 }
