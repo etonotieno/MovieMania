@@ -14,22 +14,18 @@
  *    limitations under the License.
  */
 
-package com.edoubletech.moviemania.ui.main
+package com.edoubletech.moviemania.viewmodels
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.edoubletech.moviemania.R
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import com.edoubletech.moviemania.data.MovieRepository
+import com.edoubletech.moviemania.data.model.Movie
 
-class MainActivity : AppCompatActivity() {
+class MainViewModel : ViewModel() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
-        }
+    private val repository = MovieRepository()
+
+    fun getPopularMovies(): LiveData<List<Movie>> {
+        return repository.getPopularMovies()
     }
-
 }

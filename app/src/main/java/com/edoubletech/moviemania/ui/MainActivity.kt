@@ -14,10 +14,17 @@
  *    limitations under the License.
  */
 
-package com.edoubletech.moviemania
+package com.edoubletech.moviemania.ui
 
-import androidx.lifecycle.ViewModel
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.edoubletech.moviemania.R
 
-class MainViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
+    }
+
 }
