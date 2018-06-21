@@ -30,10 +30,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        dataBinding{
-            enabled = true
-        }
     }
     buildTypes {
         release {
@@ -50,13 +46,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    implementation 'androidx.cardview:cardview:1.0.0-alpha1'
-    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'androidx.cardview:cardview:1.0.0-alpha3'
+    implementation 'com.google.android.material:material:1.0.0-alpha3'
 
     // Kotlin
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    kapt 'com.android.databinding:compiler:3.2.0-alpha18'
 
     // Work Manager and Navigation
     implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha02"
@@ -72,4 +66,18 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:2.0.0-alpha1"
     kapt "androidx.room:room-compiler:2.0.0-alpha1"
+
+    // Glide for image viewing
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
+    // Retrofit for making the network calls
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // Logging interceptor for the network calls
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    // Joda Time
+    implementation 'net.danlew:android.joda:2.9.9.3'
 }

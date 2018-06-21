@@ -14,21 +14,23 @@
  *    limitations under the License.
  */
 
-package com.edoubletech.moviemania.data.model
+package com.edoubletech.moviemania.data.api
 
-data class Movie(
-        val poster_path: String?,
-        val adult: Boolean,
-        val overview: String,
-        val release_date: String,
-        val genre_ids: ArrayList<Int>,
-        val id: Int,
-        val original_title: String,
-        val original_language: String,
-        val title: String,
-        val backdrop_path: String?,
-        val popularity: Int,
-        val vote_count: Int,
-        val video: Boolean,
-        val vote_average: Int
-)
+import com.edoubletech.moviemania.BuildConfig
+import okhttp3.Interceptor
+import okhttp3.Response
+
+class AuthKeyInterceptor : Interceptor {
+
+    override fun intercept(chain: Interceptor.Chain?): Response {
+        var request = chain!!.request()
+
+        val url = request.url().newBuilder()
+                .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
+                .build()
+
+        request = request.newBuilder().url(url).build()
+
+        return chain.proceed(request)
+    }
+}
