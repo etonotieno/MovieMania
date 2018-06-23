@@ -27,8 +27,8 @@ data class Movie(
         val original_language: String,
         val title: String,
         val backdrop_path: String?,
-        val popularity: Int,
+        val popularity: Double,
         val vote_count: Int,
         val video: Boolean,
-        val vote_average: Int
+        val vote_average: Double
 )

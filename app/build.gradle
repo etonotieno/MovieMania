@@ -18,7 +18,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'androidx.navigation.safeargs'
 
 
 android {
@@ -32,13 +32,40 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug {
+            // Temporary workaround for Kotlin 1.2.50 and DataBinding bug. For more context see
+            // https://issuetracker.google.com/issues/110198434 and
+            // https://youtrack.jetbrains.com/issue/KT-24915#comment=27-2914947
+            tasks.whenTaskAdded { task ->
+                if (task.name == 'kaptDebugKotlin') {
+                    task.dependsOn dataBindingExportFeaturePackageIdsDebug
+                }
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // Temporary workaround for Kotlin 1.2.50 and DataBinding bug. For more context see
+            // https://issuetracker.google.com/issues/110198434 and
+            // https://youtrack.jetbrains.com/issue/KT-24915#comment=27-2914947
+            tasks.whenTaskAdded { task ->
+                if (task.name == 'kaptReleaseKotlin') {
+                    task.dependsOn dataBindingExportFeaturePackageIdsRelease
+                }
+            }
         }
     }
-	  buildTypes.each {
+
+    buildTypes.each {
         it.buildConfigField 'String', 'TMDB_API_KEY', ApiKey
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -50,7 +77,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0-alpha3'
 
     // Kotlin
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Work Manager and Navigation
     implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha02"

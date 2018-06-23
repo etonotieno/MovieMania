@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.edoubletech.moviemania.R
 import com.edoubletech.moviemania.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.main_fragment.view.*
@@ -33,15 +32,14 @@ import kotlinx.android.synthetic.main.main_fragment.view.*
 class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
-    private lateinit var recyclerView: RecyclerView
     private val mainMovieAdapter = MainMovieAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.main_fragment, container, false)
-        recyclerView = view.movie_recycler_view
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+        view.movie_recycler_view.setHasFixedSize(true)
+        view.movie_recycler_view.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+        view.movie_recycler_view.adapter = mainMovieAdapter
         return view
     }
 
@@ -53,5 +51,4 @@ class MainFragment : Fragment() {
             mainMovieAdapter.submitList(it)
         })
     }
-
 }

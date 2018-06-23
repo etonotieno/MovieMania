@@ -25,16 +25,16 @@ import retrofit2.http.Query
 
 interface MovieService {
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     fun getPopularMovies(): Call<MovieResponse>
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     fun getTopRatedMovies(): Call<MovieResponse>
 
-    @GET("/movie/{movie_id}")
+    @GET("movie/{movie_id}")
     fun getSingleMovieDetails(@Path("movie_id") movieId: Int): Call<Movie>
 
-    @GET("/search/movie?")
+    @GET("search/movie?")
     fun searchForMovies(@Query("query") queryString: String): Call<MovieResponse>
 
 }

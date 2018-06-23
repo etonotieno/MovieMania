@@ -21,8 +21,10 @@ import com.edoubletech.moviemania.data.api.MovieService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 object Injector {
+    private const val BASE_URL= "https://api.themoviedb.org/3/"
 
     private fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor()
@@ -38,6 +40,8 @@ object Injector {
 
     private fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(provideOkHttpClient())
                 .build()
     }
