@@ -60,9 +60,7 @@ android {
     buildTypes.each {
         it.buildConfigField 'String', 'TMDB_API_KEY', ApiKey
     }
-    dataBinding {
-        enabled = true
-    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -71,10 +69,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    implementation 'androidx.cardview:cardview:1.0.0-alpha3'
-    implementation 'com.google.android.material:material:1.0.0-alpha3'
+    implementation 'androidx.cardview:cardview:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -88,19 +86,19 @@ dependencies {
     implementation "androidx.paging:paging-runtime:2.0.0-alpha1"
 
     // ViewModel and LiveData
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
 
     // Room
-    implementation "androidx.room:room-runtime:2.0.0-alpha1"
-    kapt "androidx.room:room-compiler:2.0.0-alpha1"
+    implementation "androidx.room:room-runtime:2.0.0-beta01"
+    kapt "androidx.room:room-compiler:2.0.0-beta01"
 
     // Glide for image viewing
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
 
     // Retrofit for making the network calls
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
     // Logging interceptor for the network calls
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
