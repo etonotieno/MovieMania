@@ -31,31 +31,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-
-        debug {
-            // Temporary workaround for Kotlin 1.2.50 and DataBinding bug. For more context see
-            // https://issuetracker.google.com/issues/110198434 and
-            // https://youtrack.jetbrains.com/issue/KT-24915#comment=27-2914947
-            tasks.whenTaskAdded { task ->
-                if (task.name == 'kaptDebugKotlin') {
-                    task.dependsOn dataBindingExportFeaturePackageIdsDebug
-                }
-            }
-        }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            // Temporary workaround for Kotlin 1.2.50 and DataBinding bug. For more context see
-            // https://issuetracker.google.com/issues/110198434 and
-            // https://youtrack.jetbrains.com/issue/KT-24915#comment=27-2914947
-            tasks.whenTaskAdded { task ->
-                if (task.name == 'kaptReleaseKotlin') {
-                    task.dependsOn dataBindingExportFeaturePackageIdsRelease
-                }
-            }
-        }
-    }
 
     buildTypes.each {
         it.buildConfigField 'String', 'TMDB_API_KEY', ApiKey
@@ -78,12 +53,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Work Manager and Navigation
-    implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha02"
+    implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha04"
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha02"
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha02"
 
     //Paging
-    implementation "androidx.paging:paging-runtime:2.0.0-alpha1"
+    implementation "androidx.paging:paging-runtime:2.0.0-beta01"
 
     // ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'

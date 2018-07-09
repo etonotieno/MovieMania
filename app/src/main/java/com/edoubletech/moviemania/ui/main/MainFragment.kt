@@ -37,9 +37,11 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.main_fragment, container, false)
-        view.movie_recycler_view.setHasFixedSize(true)
-        view.movie_recycler_view.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
-        view.movie_recycler_view.adapter = mainMovieAdapter
+        view.movie_recycler_view.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+            adapter = mainMovieAdapter
+        }
         return view
     }
 
