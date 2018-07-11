@@ -20,6 +20,9 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import com.edoubletech.moviemania.data.model.MovieResponse
 
+/**
+ * This is a Room DAO that allows us to use abstract methods to get data from the Room database
+ */
 abstract class MovieDao : BaseDao<MovieResponse> {
 
     abstract fun getMovieById(movieId: Int): LiveData<MovieResponse>

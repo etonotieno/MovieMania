@@ -16,10 +16,11 @@
 
 package com.edoubletech.moviemania.data
 
-import androidx.room.Database
 import com.edoubletech.moviemania.data.dao.MovieDao
-import com.edoubletech.moviemania.data.model.Movie
 
+/**
+ * This is a Room database with access to the DAOs
+ */
 abstract class MovieDb {
 
     abstract fun movieDao(): MovieDao

@@ -28,6 +28,9 @@ import com.edoubletech.moviemania.R
 import com.edoubletech.moviemania.data.model.Movie
 import kotlinx.android.synthetic.main.movie_item.view.*
 
+/**
+ * This is adapter is used by a recycler view to bind data from the API to the appropriate view
+ */
 class MainMovieAdapter : ListAdapter<Movie, MainMovieAdapter.MovieViewHolder>(COMPARATOR) {
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {

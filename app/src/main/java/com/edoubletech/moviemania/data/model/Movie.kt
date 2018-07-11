@@ -16,6 +16,10 @@
 
 package com.edoubletech.moviemania.data.model
 
+/**
+ * This model represents a Movie object that we get back from the API.
+ * It also represents a Room entity that will be used to represent a table in the Room database.
+ */
 data class Movie(
         val poster_path: String?,
         val adult: Boolean,

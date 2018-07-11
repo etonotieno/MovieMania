@@ -16,6 +16,9 @@
 
 package com.edoubletech.moviemania.data.model
 
+/**
+ * This class is a model representing the type of data we get from the API
+ */
 data class MovieResponse(
         val page: Int,
         val results: List<Movie>,

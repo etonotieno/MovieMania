@@ -26,6 +26,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * This is a repository class that enables us to abstract away the source of the data we get.
+ * The data can be fetched from the Network or the Database and this class enables us to hide the
+ * implementation details to the ViewModel
+ */
 class MovieRepository {
 
     private val service = Injector.provideMovieService()

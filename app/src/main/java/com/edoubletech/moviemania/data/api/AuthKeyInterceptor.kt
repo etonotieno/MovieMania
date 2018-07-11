@@ -20,6 +20,9 @@ import com.edoubletech.moviemania.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
+/**
+ * This is an Interceptor used to add The Movie DB API Key to the request url
+ */
 class AuthKeyInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain?): Response {

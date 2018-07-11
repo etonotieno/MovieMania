@@ -19,6 +19,12 @@ package com.edoubletech.moviemania.data.dao
 import androidx.room.Delete
 import androidx.room.Insert
 
+/**
+ * This is the base data access object with a type parameter with common methods to be shared by
+ * different DAOs.
+ *
+ * @param T This is the type of data that will be modified or added.
+ */
 interface BaseDao<T> {
 
     @Insert

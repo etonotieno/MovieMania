@@ -23,6 +23,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * This interface is a service used by retrofit to enable us to hit different endpoints of the API
+ * using annotated methods.
+ */
 interface MovieService {
 
     @GET("movie/popular")

@@ -23,6 +23,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * This is an object used to inject different components to different classes.
+ * This will be replaced by Dagger in future commits.
+ */
 object Injector {
     private const val BASE_URL= "https://api.themoviedb.org/3/"
 

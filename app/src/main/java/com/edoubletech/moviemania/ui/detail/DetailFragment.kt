@@ -24,6 +24,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.edoubletech.moviemania.R
 
+/**
+ * This Fragment loads more details of the clicked Movie item from the MainFragment
+ */
 class DetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

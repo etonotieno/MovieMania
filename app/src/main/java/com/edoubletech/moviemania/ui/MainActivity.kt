@@ -20,6 +20,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.edoubletech.moviemania.R
 
+/**
+ * This is the MainActivity that acts as a host for the different fragments that will be shown to
+ * the user.
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

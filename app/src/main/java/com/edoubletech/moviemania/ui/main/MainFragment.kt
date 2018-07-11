@@ -29,6 +29,9 @@ import com.edoubletech.moviemania.R
 import com.edoubletech.moviemania.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.main_fragment.view.*
 
+/**
+ * This is the MainFragment that shows the popular Movies list from the API
+ */
 class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel

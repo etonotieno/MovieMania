@@ -20,9 +20,12 @@ import androidx.paging.PagedList
 import com.edoubletech.moviemania.data.api.MovieService
 import com.edoubletech.moviemania.data.model.Movie
 
+/**
+ * This is a boundary callback used by the Paging library to signal when a PagedList has reached the
+ * end of available data.
+ */
 class TmdbBoundaryCallback(
-        private val service: MovieService
-) : PagedList.BoundaryCallback<Movie>() {
+        private val service: MovieService) : PagedList.BoundaryCallback<Movie>() {
 
     override fun onZeroItemsLoaded() {
     }
@@ -31,6 +34,6 @@ class TmdbBoundaryCallback(
 
     }
 
-    private fun requestAndSaveData(){
+    private fun requestAndSaveData() {
     }
 }

@@ -21,6 +21,10 @@ import androidx.lifecycle.ViewModel
 import com.edoubletech.moviemania.data.MovieRepository
 import com.edoubletech.moviemania.data.model.Movie
 
+/**
+ * This ViewModel holds the data from the API by calling methods from the Repository and sends it
+ * to the View. It also helps to survive configuration changes.
+ */
 class MainViewModel : ViewModel() {
 
     private val repository = MovieRepository()
