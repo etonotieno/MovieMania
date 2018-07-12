@@ -18,8 +18,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'androidx.navigation.safeargs'
-
 
 android {
     compileSdkVersion 28
@@ -52,10 +50,8 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // Work Manager and Navigation
+    // Work Manager
     implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha04"
-    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha02"
-    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha02"
 
     //Paging
     implementation "androidx.paging:paging-runtime:2.0.0-beta01"

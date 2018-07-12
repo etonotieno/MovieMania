@@ -59,11 +59,6 @@ class MainMovieAdapter : ListAdapter<Movie, MainMovieAdapter.MovieViewHolder>(CO
         private val movieName = itemView.movieNameTextView
         private val movieRating = itemView.ratingTextView
 
-        init {
-            itemView.setOnClickListener {
-                it.findNavController().navigate(R.id.to_detail_fragment)
-            }
-        }
 
         fun bindData(movie: Movie) {
             val resources = itemView.resources
