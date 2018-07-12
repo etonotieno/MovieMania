@@ -19,22 +19,20 @@ package com.edoubletech.moviemania.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.edoubletech.moviemania.R
 import com.edoubletech.moviemania.data.model.Movie
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 /**
  * This is adapter is used by a recycler view to bind data from the API to the appropriate view
  */
-class MainMovieAdapter : ListAdapter<Movie, MainMovieAdapter.MovieViewHolder>(COMPARATOR) {
+class MainMovieAdapter(val listener: MovieItemClickListener) : ListAdapter<Movie, MainMovieAdapter.MovieViewHolder>(COMPARATOR) {
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie: Movie = getItem(position)
+        val movie = getItem(position)
+        holder.itemView.tag = movie
         holder.bindData(movie)
     }
 
@@ -54,7 +52,12 @@ class MainMovieAdapter : ListAdapter<Movie, MainMovieAdapter.MovieViewHolder>(CO
         }
     }
 
-    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    interface MovieItemClickListener {
+
+        fun onMovieItemClicked(movieId: Int)
+    }
+
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val movieImage = itemView.movieImageView
         private val movieName = itemView.movieNameTextView
         private val movieRating = itemView.ratingTextView
@@ -76,5 +79,11 @@ class MainMovieAdapter : ListAdapter<Movie, MainMovieAdapter.MovieViewHolder>(CO
 
             movieRating.text = movie.vote_average.toString()
         }
+
+        override fun onClick(view: View?) {
+            val movie: Movie = itemView.tag as Movie
+            listener.onMovieItemClicked(movie.id)
+        }
+
     }
 }

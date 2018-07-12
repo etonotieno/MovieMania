@@ -26,16 +26,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.edoubletech.moviemania.R
+import com.edoubletech.moviemania.ui.detail.DetailFragment
 import com.edoubletech.moviemania.viewmodels.MainViewModel
+import kotlinx.android.synthetic.main.host_activity.view.*
 import kotlinx.android.synthetic.main.main_fragment.view.*
 
 /**
  * This is the MainFragment that shows the popular Movies list from the API
  */
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), MainMovieAdapter.MovieItemClickListener {
 
     private lateinit var viewModel: MainViewModel
-    private val mainMovieAdapter = MainMovieAdapter()
+    private val mainMovieAdapter = MainMovieAdapter(this)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -55,5 +57,14 @@ class MainFragment : Fragment() {
         viewModel.getPopularMovies().observe(this, Observer {
             mainMovieAdapter.submitList(it)
         })
+    }
+
+    override fun onMovieItemClicked(movieId: Int) {
+        val detailFragment = DetailFragment()
+        val args = Bundle()
+        args.putInt("MOVIE_ID", movieId)
+        detailFragment.arguments = args
+        activity?.supportFragmentManager
+                ?.beginTransaction()?.replace(R.id.main_nav_host, DetailFragment())
     }
 }

@@ -19,16 +19,23 @@ package com.edoubletech.moviemania.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.edoubletech.moviemania.R
+import com.edoubletech.moviemania.ui.main.MainFragment
+import kotlinx.android.synthetic.main.host_activity.view.*
 
 /**
- * This is the MainActivity that acts as a host for the different fragments that will be shown to
+ * This is the HostActivity that acts as a host for the different fragments that will be shown to
  * the user.
  */
-class MainActivity : AppCompatActivity() {
+class HostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-    }
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                    .add(MainFragment(), R.id.main_nav_host)
+                    .commit()
+        }
+    }
 }
